@@ -9,7 +9,7 @@ public partial class MonkeysViewModel : BaseViewModel
 
     public MonkeysViewModel(MonkeyService monkeyService)
     {
-        Title = "Monkey FInder";
+        Title = "Monkey Finder";
         this.monkeyService = monkeyService;
     }
 
