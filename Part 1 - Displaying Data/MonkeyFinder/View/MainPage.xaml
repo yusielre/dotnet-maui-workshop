@@ -12,7 +12,11 @@
           ColumnSpacing="5"
           RowDefinitions="*,Auto"
           RowSpacing="0">
-        <CollectionView BackgroundColor="Transparent"
+
+        <RefreshView Grid.ColumnSpan="2"
+                     Command="{Binding GetMonkeysCommand}"
+                     IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView BackgroundColor="Transparent"
                         Grid.ColumnSpan="2"
                         ItemsSource="{Binding Monkeys}"
                         SelectionMode="None">
@@ -44,9 +48,16 @@
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <StackLayout Padding="100">
+                    <Image HorizontalOptions="CenterAndExpand"
+                           Source="nodata.png"
+                           VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </CollectionView.EmptyView>
             
         </CollectionView>
-
+        </RefreshView>
         <Button Text="Get Monkeys"
                 Style="{StaticResource ButtonOutline}"
                 Command="{Binding GetMonkeysCommand}"
